@@ -1,7 +1,11 @@
-import spydrnet as sdn
-import plot_connectivity_graph as pcg
+import pyrtl
+import pyparsing
 
-#netlist = sdn.parse('fifo.edf')
-netlist = sdn.parse("one_counter.edf")
+with open("fullAdder.blif", "r") as f:
+    blif = f.read()
 
-pcg.run()
+print(blif)
+
+pyrtl.importexport.input_from_blif(blif, merge_io_vectors=False, clock_name='clk')
+
+#Issue reading in BLIF file - recieiving error 'pyparsing.exceptions.ParseException: Expected Keyword '.end', found '.'  (at char 275), (line:11, col:1)'

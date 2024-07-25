@@ -1,0 +1,24 @@
+digraph "fullAdder" {
+label="fullAdder";
+rankdir="LR";
+remincross=true;
+n1 [ shape=octagon, label="a", color="black", fontcolor="black"];
+n2 [ shape=octagon, label="b", color="black", fontcolor="black"];
+n3 [ shape=octagon, label="cin", color="black", fontcolor="black"];
+n4 [ shape=octagon, label="cout", color="black", fontcolor="black"];
+n5 [ shape=octagon, label="s", color="black", fontcolor="black"];
+v0 [ label="1'0" ];
+c11 [ shape=record, label="{{<p6> I0|<p7> I1|<p8> I2|<p9> I3}|cout_SB_LUT4_O\nSB_LUT4|{<p10> O}}",  ];
+v1 [ label="1'0" ];
+c12 [ shape=record, label="{{<p6> I0|<p7> I1|<p8> I2|<p9> I3}|s_SB_LUT4_O\nSB_LUT4|{<p10> O}}",  ];
+n1:e -> c11:p9:w [color="black", fontcolor="black", label=""];
+n1:e -> c12:p9:w [color="black", fontcolor="black", label=""];
+n2:e -> c11:p8:w [color="black", fontcolor="black", label=""];
+n2:e -> c12:p8:w [color="black", fontcolor="black", label=""];
+n3:e -> c11:p7:w [color="black", fontcolor="black", label=""];
+n3:e -> c12:p7:w [color="black", fontcolor="black", label=""];
+c11:p10:e -> n4:w [color="black", fontcolor="black", label=""];
+c12:p10:e -> n5:w [color="black", fontcolor="black", label=""];
+v0:e -> c11:p6:w [color="black", fontcolor="black", label=""];
+v1:e -> c12:p6:w [color="black", fontcolor="black", label=""];
+}

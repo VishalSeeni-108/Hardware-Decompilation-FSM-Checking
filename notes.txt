@@ -1,0 +1,1 @@
+When passing in BLIF files to pyrtl, ensure that tech mapping has not taken place
