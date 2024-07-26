@@ -1,0 +1,9 @@
+read_verilog fullAdder.v
+hierarchy -check -top fullAdder
+proc; opt
+memory; opt
+fsm; opt
+techmap; opt
+splitnets -ports; opt
+clean -purge
+write_blif fullAdder.blif

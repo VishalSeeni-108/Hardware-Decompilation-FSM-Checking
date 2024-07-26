@@ -1,1 +1,10 @@
 When passing in BLIF files to pyrtl, ensure that tech mapping has not taken place
+
+
+Create a yosys script filt .ys to save synthesis procedure 
+
+component_name/widthWireDefined(W for wire, I for input, O for output, R for register, C for constant) <-- 
+
+sv to v systemverilog to verilog converter if want to use sv files
+
+Block.net_connections function
