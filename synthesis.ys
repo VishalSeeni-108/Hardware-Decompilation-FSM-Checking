@@ -1,9 +1,9 @@
-read_verilog fullAdder.v
-hierarchy -check -top fullAdder
+read_verilog register_test.v
+hierarchy -check -top register_test
 proc; opt
 memory; opt
 fsm; opt
 techmap; opt
 splitnets -ports; opt
 clean -purge
-write_blif fullAdder.blif
+write_blif register_test.blif
