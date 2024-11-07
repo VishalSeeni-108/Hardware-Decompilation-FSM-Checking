@@ -9,11 +9,9 @@ input_block = pyrtl.Block()
 
 pyrtl.importexport.input_from_blif(blif, block=input_block, merge_io_vectors=False, clock_name='clk')
 
-print(input_block)
+print(input_block) #Recieving error "pyrtl.pyrtlexceptions.PyrtlInternalError: error, net references different block"
 
-#Recieving error "pyrtl.pyrtlexceptions.PyrtlInternalError: error, net references different block"
-
-
+print(input_block.net_connections)
 
 
 
