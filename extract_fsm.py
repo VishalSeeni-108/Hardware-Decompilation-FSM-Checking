@@ -5,9 +5,18 @@ from collections import deque
 with open("register_test.blif", "r") as f:
     blif = f.read()
 
-# print(blif)
+input_block = pyrtl.Block()
 
-pyrtl.importexport.input_from_blif(blif, merge_io_vectors=False, clock_name='clk')
+pyrtl.importexport.input_from_blif(blif, block=input_block, merge_io_vectors=False, clock_name='clk')
+
+print(input_block)
+
+#Recieving error "pyrtl.pyrtlexceptions.PyrtlInternalError: error, net references different block"
+
+
+
+
+
 
 # netlist = pyrtl.working_block()
 # for x in netlist.logic:
@@ -17,23 +26,23 @@ pyrtl.importexport.input_from_blif(blif, merge_io_vectors=False, clock_name='clk
 #         print("Outputs: " + str(x.dests))
 
 
-for log_net in pyrtl.visualization.net_graph():
-    print(log_net)
-    #Search for registers
-    if(hasattr(log_net, 'op') and log_net.op == 'r' and hasattr(log_net, 'dests')):
-    #Perform DFS to find loops
-            #Queue destinations
-            destinations = deque()
-            for dest in log_net.dests:
-                for pot_dest in pyrtl.visualization.net_graph():
-                    if(hasattr(pot_dest, 'op') and hasattr(pot_dest, 'args')):
-                        for inputs in pot_dest.args:
-                            if(inputs.name == dest.name):
-                                 destinations.append(pot_dest)
-                                 break; 
+# for log_net in pyrtl.visualization.net_graph():
+#     print(log_net)
+#     #Search for registers
+#     if(hasattr(log_net, 'op') and log_net.op == 'r' and hasattr(log_net, 'dests')):
+#     #Perform DFS to find loops
+#             #Queue destinations
+#             destinations = deque()
+#             for dest in log_net.dests:
+#                 for pot_dest in pyrtl.visualization.net_graph():
+#                     if(hasattr(pot_dest, 'op') and hasattr(pot_dest, 'args')):
+#                         for inputs in pot_dest.args:
+#                             if(inputs.name == dest.name):
+#                                  destinations.append(pot_dest)
+#                                  break; 
 
-            for destination in destinations: 
-                 print("Destination: ", destination)
+#             for destination in destinations: 
+#                  print("Destination: ", destination)
 
     #Find netlists where dests are inputs
 
