@@ -25,7 +25,7 @@ for log_net in pyrtl.visualization.net_graph():
             #Perform DFS to find loops
             #Queue destinations
             destinations = deque()
-            for dest in log_net.dests:
+            for dest in log_net.dests: #Rewrite to use net_connections to find destinations from register easier
                 for pot_dest in pyrtl.visualization.net_graph():
                     if(hasattr(pot_dest, 'op') and hasattr(pot_dest, 'args')):
                         for inputs in pot_dest.args:
@@ -38,7 +38,7 @@ for log_net in pyrtl.visualization.net_graph():
             #visited nodes to visited list
             visited = []
             loop_found = False
-            for destination in destinations: #TODO - Need to fix recursive looping, Python does not allow items to be queued while iterating over the same deque
+            for destination in destinations: #TODO - Need to fix recursive looping, Python does not allow items to be queued while iterating over the same deque, maybe use a while loop and a stack and pop off new destinations
                 print("Searching destination: ", destination)
                 for dest in destination.dests:
                     #Process node - check if any of the destinations of the current node is an input to the original register
@@ -63,6 +63,8 @@ for log_net in pyrtl.visualization.net_graph():
                                     destinations.append(pot_dest)
                                     break; 
 
+
+print(pyrtl.working_block())
 
     #Find netlists where dests are inputs
 
